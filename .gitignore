@@ -1,5 +1,4 @@
 venv/
-data/
 *.csv
 .ipynb_checkpoints/
 pycache/
