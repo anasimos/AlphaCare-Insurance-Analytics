@@ -30,12 +30,10 @@ jobs:
 
       - name: Setup DVC Local Remote
         run: |
-          # DVC needs to be initialized in the workspace
-          dvc init --no-scm # --no-scm to not initialize a git repo inside DVC's scope if it's already a git repo
+          # DVC needs to be initialized in the workspace.
+          # Use -f to force reinitialization if .dvc already exists.
+          dvc init --no-scm -f
           # Set up the local DVC remote
-          # IMPORTANT: Adjust /home/runner/work/your-repo-name/your-repo-name/dvc_storage
-          # to a path outside the repository if you prefer, or a consistent location.
-          # For a CI runner, /tmp/dvc_cache is often used for temporary storage.
           mkdir -p /tmp/dvc_cache # Create a temporary directory for DVC cache
           dvc remote add -d localstorage /tmp/dvc_cache
 
